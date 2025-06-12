@@ -3,7 +3,7 @@ import websockets
 import json
 import os.path
 from datetime import datetime
-
+from dotenv import load_dotenv
 PING_INTERVAL = 180  # 3 минуты в секундах
 PONG_TIMEOUT = 600  # 10 минут в секундах
 

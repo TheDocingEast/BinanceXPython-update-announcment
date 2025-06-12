@@ -4,12 +4,14 @@ import time
 import requests
 import telebot
 import os
+from dotenv import load_dotenv
+load_dotenv()
 # Отключение проверки сертификатов (не рекомендуется в продакшене!)
 requests.packages.urllib3.disable_warnings(requests.packages.urllib3.exceptions.InsecureRequestWarning)
 
 # Замените 'ваш_токен' на ваш реальный токен доступа
-credentials = 'YjJmOTJkN2QtMDI1Zi00ZGQxLTkxNzAtNjViZTg2MmZkM2VmOjg3NDdkMjY2LTZiY2EtNDFkMC1iYmE2LThlYWI0YmQ0Nzk5Ng=='
-bot = telebot.TeleBot('6493912171:AAHKpltnLc7j8hvEMKHKHFwlRam3cB591Yw')
+credentials = os.getenv("GIGACHAT_API")
+bot = telebot.TeleBot(os.getenv("TELEGRAM_API"))
 # Создаем экземпляр класса GigaChat
 model = GigaChat(credentials=credentials, model="GigaChat", verify_ssl_certs=False)
 

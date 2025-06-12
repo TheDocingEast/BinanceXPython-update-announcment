@@ -9,13 +9,15 @@ from datetime import datetime
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import requests
+from dotenv import load_dotenv
+load_dotenv()
 # Настройки
 BASE_URL = 'https://www.binance.com/en/support/announcement/api-updates?c=51&navId=51'
 TITLE_CLASS_NAME = 'div.gap-4:nth-child(1) > div:nth-child(1) > a:nth-child(1) > h3:nth-child(1)'
 URL_NAME = 'div.gap-4:nth-child(1) > div:nth-child(1) > a:nth-child(1)'
 SAVE_FILES = '/home/telbot/data.json'     # Директория для сохранения изображений
-credentials = 'YjJmOTJkN2QtMDI1Zi00ZGQxLTkxNzAtNjViZTg2MmZkM2VmOjg3NDdkMjY2LTZiY2EtNDFkMC1iYmE2LThlYWI0YmQ0Nzk5Ng=='
-bot = telebot.TeleBot('6493912171:AAHKpltnLc7j8hvEMKHKHFwlRam3cB591Yw')
+credentials = os.getenv("GIGACHAT_API")
+bot = telebot.TeleBot(os.getenv("TELEGRAM_API"))
 # Создаем экземпляр класса GigaChat
 model = GigaChat(credentials=credentials, model="GigaChat", verify_ssl_certs=False)
 options = selenium.webdriver.FirefoxOptions()
