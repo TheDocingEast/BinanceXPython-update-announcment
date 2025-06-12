@@ -3,7 +3,7 @@ import websockets
 import json
 import os.path
 from datetime import datetime
-from dotenv import load_dotenv
+
 PING_INTERVAL = 180  # 3 минуты в секундах
 PONG_TIMEOUT = 600  # 10 минут в секундах
 
@@ -34,12 +34,12 @@ async def listen_to_websocket():
                     "data": data_dict
                 }
 
-                if not os.path.exists('/home/telbot/price.json'):
-                    with open('/home/telbot/price.json', 'w') as f:
+                if not os.path.exists('/price.json'):
+                    with open('/price.json', 'w') as f:
                         json.dump(output_data, f, indent=4)
                     print(f"{datetime.now()} | Файл price.json создан и заполнен данными.")
                 else:
-                    with open('/home/telbot/price.json', 'w') as f:
+                    with open('/price.json', 'w') as f:
                         json.dump(output_data, f, indent=4)
                     print(f"{datetime.now()} | Данные успешно обновлены в файле.")
 

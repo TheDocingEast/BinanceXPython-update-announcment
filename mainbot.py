@@ -15,7 +15,7 @@ load_dotenv()
 BASE_URL = 'https://www.binance.com/en/support/announcement/api-updates?c=51&navId=51'
 TITLE_CLASS_NAME = 'div.gap-4:nth-child(1) > div:nth-child(1) > a:nth-child(1) > h3:nth-child(1)'
 URL_NAME = 'div.gap-4:nth-child(1) > div:nth-child(1) > a:nth-child(1)'
-SAVE_FILES = '/home/telbot/data.json'     # Директория для сохранения изображений
+SAVE_FILES = '/data.json'     # Директория для сохранения изображений
 credentials = os.getenv("GIGACHAT_API")
 bot = telebot.TeleBot(os.getenv("TELEGRAM_API"))
 # Создаем экземпляр класса GigaChat
@@ -89,7 +89,7 @@ def handle_callback(call):
             bot.send_message(call.message.chat.id, f'Не удалось получить данные сайта, ошибка {e}, отправьте ошибку по адресу: .....', reply_markup=keyboard)
     elif call.data == 'callback_2':
         print('Отправка цены PEPE1000')
-        with open('/home/telbot/price.json', 'r+') as f:
+        with open('/price.json', 'r+') as f:
             data = json.load(f)
             book_ticker_data = data['data']
             message = format_telegram_message(book_ticker_data)

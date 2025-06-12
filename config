@@ -1,4 +1,0 @@
-Host github.com
-    ForwardAgent yes
-    PreferredAuthentications publickey
-    IdentityFile /root/.ssh/id_rsa.pub
